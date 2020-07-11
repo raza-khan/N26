@@ -30,7 +30,7 @@ global with sharing class CustomProductResource {
      * */
     private static CustomProductWrapper getCustomerProductJson( String customerId )
     {
-        string response;
+       
         CustomProductWrapper wrapper = new CustomProductWrapper();
         CustomProductWrapper.Error error = new CustomProductWrapper.Error();
         wrapper.error = error;
@@ -61,12 +61,12 @@ global with sharing class CustomProductResource {
                        
                         wrapper.services.add(serviceInfo);
                     }
-                    response = JSON.serialize(wrapper);
+                   
                     
                 }else{
                     
                     error.errorMessage = 'The customer is not subscribed to any product';
-                    response = JSON.serialize(error);
+                    
                     
                 }
                 
@@ -77,7 +77,7 @@ global with sharing class CustomProductResource {
             }
         }Catch(Exception ex){
             error.errorMessage = ex.getMessage();
-            response = JSON.serializePretty(error);
+            
         }
         return wrapper;  
         
